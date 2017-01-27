@@ -5,6 +5,8 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class OrbitalRigidbody : MonoBehaviour
 {
+    private const float GRAVITY_CONSTANT = 80f;
+
     public Rigidbody2D mRigid;
     //[SerializeField]
     private PlanetaryObject mGravityBody = null;
@@ -21,32 +23,49 @@ public class OrbitalRigidbody : MonoBehaviour
 
     }
 
+    public void Init(PlanetaryObject gravityBody)
+    {
+        mGravityBody = gravityBody;
+    }
+
     void FixedUpdate()
     {
         if (mGravityBody)
         {
             float distance;
-
+            float forceScalar;
             Vector2 direction;
-            direction = mGravityBody.transform.position - transform.position;
-            distance = direction.magnitude;
+            Vector2 forceVector = Vector2.zero;
 
-            direction.Normalize();
+            for (int i = 0; i < Game.sBodies.Length; i++)
+            {
+                direction = Game.sBodies[i].transform.position - transform.position;
+                distance = direction.magnitude;
 
-            mRigid.AddForce(mRigid.mass * direction * mGravityBody.Gravity * Time.fixedDeltaTime, ForceMode2D.Force);
-           // Debug.Log("Gravity");
+                direction.Normalize();
+                
+                forceScalar = (GRAVITY_CONSTANT * mRigid.mass * mGravityBody.Mass) / (distance * distance);
+
+                forceVector += forceScalar * direction;
+            }
+
+            mRigid.AddForce(forceVector * Time.fixedDeltaTime, ForceMode2D.Force);
+            // Debug.Log("Gravity");
         }
     }
 
-    public void OnTriggerEnter2D(Collider2D collision)
+    //public void OnTriggerEnter2D(Collider2D collision)
+    //{
+    //    PlanetaryObject other = collision.GetComponent<PlanetaryObject>();
+    //    if (other != null)
+    //    {
+    //        mGravityBody = other;
+    //    }
+    //}
+
+    public void OnCollisionEnter2D(Collision2D collision)
     {
-        PlanetaryObject other = collision.GetComponent<PlanetaryObject>();
-        if (other != null)
-        {
-            mGravityBody = other;
-        }
+        Destroy(gameObject);
+        Destroy(this);
     }
-
-
-
 }

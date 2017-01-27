@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlanetaryObject : MonoBehaviour {
-
+public class PlanetaryObject : MonoBehaviour
+{
     [SerializeField]
-    private float mGravity;
+    private float mMass;
 
-    public float Gravity { get { return mGravity; ; } set { mGravity = value; } }
+    public float Mass { get { return mMass; ; } set { mMass = value; } }
 
     // Use this for initialization
     void Start ()
