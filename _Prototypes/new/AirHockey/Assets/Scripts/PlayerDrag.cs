@@ -1,0 +1,31 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class PlayerDrag : MonoBehaviour {
+
+    void OnMouseDrag()
+
+    {
+
+        Vector3 point = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+        point.z = gameObject.transform.position.z;
+
+        gameObject.transform.position = point;
+
+        Cursor.visible = false;
+
+
+    }
+
+
+
+    void OnMouseUp()
+
+    {
+
+        Cursor.visible = true;
+
+    }
+}
