@@ -20,12 +20,12 @@ public class createAsteroid : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
-        {
-            myCurrentObject = Instantiate(objectToInstantiate, camera.ScreenToWorldPoint(Input.mousePosition), Quaternion.identity);
-            myCurrentObject.transform.position = new Vector3(transform.position.x, transform.position.y, 0);
+        /* if (Input.GetMouseButtonDown(0))
+         {
+             myCurrentObject = Instantiate(objectToInstantiate, camera.ScreenToWorldPoint(Input.mousePosition), Quaternion.identity);
+             myCurrentObject.transform.position = new Vector3(transform.position.x, transform.position.y, 0);
 
-        }
+         }*/
         if (Input.GetMouseButton(0) && myCurrentObject)
         {
             myCurrentObject.transform.position = camera.ScreenToWorldPoint(Input.mousePosition);
@@ -36,4 +36,14 @@ public class createAsteroid : MonoBehaviour
             myCurrentObject = null;
         }
     }
-}
+      void OnMouseDown ()
+            {
+            if (Input.GetMouseButtonDown(0))
+            {
+                myCurrentObject = Instantiate(objectToInstantiate, camera.ScreenToWorldPoint(Input.mousePosition), Quaternion.identity);
+                myCurrentObject.transform.position = new Vector3(transform.position.x, transform.position.y, 0);
+
+            }
+        }
+    }
+
