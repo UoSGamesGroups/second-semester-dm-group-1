@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerDrag : MonoBehaviour {
 
+    public float Health = 10;
+
     void OnMouseDrag()
 
     {
@@ -27,5 +29,11 @@ public class PlayerDrag : MonoBehaviour {
 
         Cursor.visible = true;
 
+    }
+
+    void Update()
+    {
+        if (Health <= 0)
+            Destroy(gameObject);
     }
 }
