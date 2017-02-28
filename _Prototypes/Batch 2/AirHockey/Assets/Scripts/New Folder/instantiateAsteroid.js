@@ -2,14 +2,11 @@
 
 var objectToInstantiate : GameObject;
 private var myCurrentObject : GameObject;
-public var camera : GameObject;
+public var _camera : GameObject;
 
 function Start()
 {
-    if (camera == null)
-    {
-        GameObject.GetComponent.Camera;
-    }
+
 }
  
 function Update(){
@@ -19,7 +16,7 @@ function Update(){
     //}
     if(Input.GetMouseButton(0) && myCurrentObject)
     {
-        myCurrentObject.transform.position =  GetComponent.<Camera>().ScreenToWorldPoint(Input.mousePosition);
+        myCurrentObject.transform.position =  _camera.GetComponent.<Camera>().ScreenToWorldPoint(Input.mousePosition);
         myCurrentObject.transform.position.z = 0;
     }
     if(Input.GetMouseButtonUp(0) && myCurrentObject){
@@ -29,7 +26,7 @@ function Update(){
 function OnMouseDown ()
 {
     if(Input.GetMouseButtonDown(0)){
-        myCurrentObject = Instantiate(objectToInstantiate, GetComponent.<Camera>().ScreenToWorldPoint(Input.mousePosition),Quaternion.identity);
+        myCurrentObject = Instantiate(objectToInstantiate, _camera.GetComponent.<Camera>().ScreenToWorldPoint(Input.mousePosition),Quaternion.identity);
         myCurrentObject.transform.position.z = 0;
     }
 }
