@@ -2,14 +2,27 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerHandle : MonoBehaviour {
+public class PlayerHandle : MonoBehaviour
+{
 
-    private bool mIsHeld;
-    private SpriteRenderer mSpriteRenderer;
+    public enum eHandleState
+    {
+        IDLE, // Still at the base
+        HELD, // Being moved by the player
+        RELEASED, // Player has released the handle, shooting the projectyile
+        RETURNING // Handle is returning to the base. Probably not needed unless animation.
+    }
 
-	// Use this for initialization
-	void Start () {
-        mSpriteRenderer = GetComponent<SpriteRenderer>();
+    private eHandleState mHandleState;
+
+    #region Properties
+    public eHandleState HandleState { get { return mHandleState; } set { mHandleState = value; } }
+    #endregion
+
+    // Use this for initialization
+    void Start ()
+    {
+        mHandleState = eHandleState.IDLE;
 	}
 	
 	// Update is called once per frame
@@ -18,10 +31,16 @@ public class PlayerHandle : MonoBehaviour {
 		
 	}
 
+    public void ReturnHandle()
+    {
+        mHandleState = eHandleState.IDLE;
+        transform.localPosition = Vector2.zero;
+    }
+
+    #region Touch Methods
     void OnTouchBegin(Vector2 pos)
     {
-        mIsHeld = true;
-        mSpriteRenderer.enabled = true;
+        mHandleState = eHandleState.HELD;
     }
 
     void OnTouchMove(Vector2 pos)
@@ -31,9 +50,7 @@ public class PlayerHandle : MonoBehaviour {
 
     void OnTouchExit(Vector2 pos)
     {
-        mIsHeld = false;
-        mSpriteRenderer.enabled = false;
-        transform.localPosition = Vector2.zero;
+        mHandleState = eHandleState.RELEASED;
     }
-
+    #endregion
 }
