@@ -1,9 +1,9 @@
-/[Ll]ibrary/
-/[Tt]emp/
-/[Oo]bj/
-/[Bb]uild/
-/[Bb]uilds/
-/Assets/AssetStoreTools*
+/_Project/[Ll]ibrary/
+/_Project/[Tt]emp/
+/_Project/[Oo]bj/
+/_Project/[Bb]uild/
+/_Project/[Bb]uilds/
+/_Project/Assets/AssetStoreTools*
 
 # Ignores for prototype projects (eg: _Prototypes/Week 0/ProjectName/)
 /_Prototypes/**/**/[Ll]ibrary/
