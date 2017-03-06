@@ -79,8 +79,12 @@ public class TouchHandler : MonoBehaviour
 
                 Vector2 wTouchPos = Camera.main.ScreenToWorldPoint(currentTouch.position);
 
-                if (overlap = Physics2D.OverlapPoint(wTouchPos, touchLayer).gameObject)
+                Collider2D overlapColl = Physics2D.OverlapPoint(wTouchPos, touchLayer);
+
+
+                if (overlapColl != null)
                 {
+                    overlap = overlapColl.gameObject;
                     mCurrentTouches.Add(overlap);
 
 
