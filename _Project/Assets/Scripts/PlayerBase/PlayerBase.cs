@@ -89,7 +89,7 @@ public class PlayerBase : MonoBehaviour
     {
         LayerMask originalMask = g.layer;
         g.layer = 9;
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(0.5f);
         g.layer = originalMask;
     }
 }
