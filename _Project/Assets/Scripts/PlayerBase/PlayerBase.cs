@@ -2,13 +2,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerBase : MonoBehaviour
 {
 
     [Header("Projectile")]
     [Tooltip("Projectile Prefab")]
-    public GameObject projectile;
+    public Projectile projectile;
     [Tooltip("Should be set to \"NoCollide\", Used for letting the projectile ignore the base on spawning.")]
     public LayerMask noCollide;
     public Color tintColor = new Color( 1.0f, 1.0f, 1.0f, 1.0f );
@@ -21,10 +22,21 @@ public class PlayerBase : MonoBehaviour
     [Range(0.0f, 10.0f)]
     public float forceMultiplier;
 
+    [Header("Gameplay")]
+    private float mHP;
+    private float mMaxHP = 5.0f;
+    [SerializeField, Tooltip("Base's unique PlayerID\n For working with damage and such")]
+    private ushort mPlayerID;
+
+    [Header("Debug")]
+    public Text mHPText;
+
     [SerializeField, Tooltip("Collider with \"TouchOnly\" layer")]
     private PlayerHandle mPlayerHandle;
 
     private LineRenderer mLineRenderer;
+
+    public ushort PlayerID { get { return mPlayerID; } }
 
     // Use this for initialization
     void Start()
@@ -32,6 +44,8 @@ public class PlayerBase : MonoBehaviour
         mLineRenderer = GetComponent<LineRenderer>();
         mLineRenderer.startColor = tintColor;
         mLineRenderer.endColor = Color.white;
+
+        mHP = mMaxHP;
     }
 
     // Update is called once per frame
@@ -56,6 +70,12 @@ public class PlayerBase : MonoBehaviour
             default:
                 break;
         }
+        DoDebug();
+    }
+
+    private void DoDebug()
+    {
+        mHPText.text = "Integrity " + mHP.ToString("N0");
     }
 
     private void DrawFireLine()
@@ -79,17 +99,23 @@ public class PlayerBase : MonoBehaviour
         Vector2 direction = differance.normalized;
         float Length = Length = Mathf.Clamp(differance.magnitude, minForceDistance, maxForceDistance);
 
-        GameObject spawnedProjectile = Instantiate(projectile, transform.position, Quaternion.identity);
+        Projectile spawnedProjectile = Instantiate<Projectile>(projectile, transform.position, Quaternion.identity);
+        spawnedProjectile.Init(mPlayerID);
         spawnedProjectile.GetComponent<Rigidbody2D>().AddForce(direction * Length * forceMultiplier, ForceMode2D.Impulse);
         spawnedProjectile.GetComponent<SpriteRenderer>().color = tintColor;
-        StartCoroutine(WaitToMakeCollidable(spawnedProjectile));
+        StartCoroutine(WaitToMakeCollidable(spawnedProjectile.gameObject));
     }
 
     private IEnumerator WaitToMakeCollidable(GameObject g)
     {
         LayerMask originalMask = g.layer;
         g.layer = 9;
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.3f);
         g.layer = originalMask;
+    }
+
+    public void TakeDamage(float damage)
+    {
+        mHP -= damage;
     }
 }
