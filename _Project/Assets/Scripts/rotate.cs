@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Singularity : MonoBehaviour {
+public class rotate : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
