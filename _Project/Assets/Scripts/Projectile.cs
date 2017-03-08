@@ -6,18 +6,7 @@ public class Projectile : MonoBehaviour
 {
     private float mDamage = 1.0f;
     private ushort mPlayerID;
-
-    // Use this for initialization
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
+    
 
     public void OnCollisionEnter2D(Collision2D collision)
     {

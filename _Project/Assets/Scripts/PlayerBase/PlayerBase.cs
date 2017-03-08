@@ -116,6 +116,7 @@ public class PlayerBase : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
+        Debug.Log("damage");
         mHP -= damage;
     }
 }
