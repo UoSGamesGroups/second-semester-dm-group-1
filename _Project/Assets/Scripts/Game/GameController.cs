@@ -6,6 +6,7 @@ public class GameController : MonoBehaviour
 {
 
     public static GameController mSingleton;
+    public static float GravityConstant = 0.01f;
 
 	// Use this for initialization
 	void Start ()

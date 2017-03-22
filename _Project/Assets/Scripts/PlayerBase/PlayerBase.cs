@@ -34,6 +34,7 @@ public class PlayerBase : MonoBehaviour
     [SerializeField, Tooltip("Collider with \"TouchOnly\" layer")]
     private PlayerHandle mPlayerHandle;
 
+    private SpriteRenderer mSpriteRenderer;
     private LineRenderer mLineRenderer;
 
     public ushort PlayerID { get { return mPlayerID; } }
@@ -44,6 +45,9 @@ public class PlayerBase : MonoBehaviour
         mLineRenderer = GetComponent<LineRenderer>();
         mLineRenderer.startColor = tintColor;
         mLineRenderer.endColor = Color.white;
+
+        mSpriteRenderer = GetComponent<SpriteRenderer>();
+        mSpriteRenderer.color = tintColor;
 
         mHP = mMaxHP;
     }

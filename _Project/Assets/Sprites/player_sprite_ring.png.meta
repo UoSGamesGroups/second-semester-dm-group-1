@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: e9a44faa53463fc4da797d3f8b55f77b
-timeCreated: 1488891178
+timeCreated: 1490179518
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -82,12 +82,12 @@ TextureImporter:
       name: player_sprite_ring_0
       rect:
         serializedVersion: 2
-        x: 187
-        y: 206
-        width: 634
-        height: 641
+        x: 87
+        y: 87
+        width: 327
+        height: 327
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
