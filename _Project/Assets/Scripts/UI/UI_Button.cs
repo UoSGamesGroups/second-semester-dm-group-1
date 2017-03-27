@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class UI_Button : MonoBehaviour {
    public Animator animMenu;
@@ -44,5 +45,9 @@ public class UI_Button : MonoBehaviour {
     {
         animInstructions.SetBool("Intructions", false);
         animMenu.SetBool("menu", true);
+    }
+    public void GameStart()
+    {
+        SceneManager.LoadScene("prototype");
     }
 }

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerBase : MonoBehaviour
 {
@@ -122,5 +123,13 @@ public class PlayerBase : MonoBehaviour
     {
         Debug.Log("damage");
         mHP -= damage;
+        check();
     }
+    public void check()
+    {
+        if (mHP <= 0)
+        {
+            SceneManager.LoadScene("finish");
+        }
+        }
 }
