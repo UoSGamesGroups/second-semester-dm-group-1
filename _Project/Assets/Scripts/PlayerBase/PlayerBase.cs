@@ -102,7 +102,7 @@ public class PlayerBase : MonoBehaviour
         Vector2 differance = transform.position - mPlayerHandle.transform.position;
 
         Vector2 direction = differance.normalized;
-        float Length = Length = Mathf.Clamp(differance.magnitude, minForceDistance, maxForceDistance);
+        float Length = Mathf.Clamp(differance.magnitude, minForceDistance, maxForceDistance);
 
         Projectile spawnedProjectile = Instantiate<Projectile>(projectile, transform.position, Quaternion.identity);
         spawnedProjectile.Init(mPlayerID);

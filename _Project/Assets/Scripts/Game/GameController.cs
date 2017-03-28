@@ -11,7 +11,7 @@ public class GameController : MonoBehaviour
 	// Use this for initialization
 	void Start ()
     {
-        if (mSingleton = null)
+        if (mSingleton == null)
         {
             mSingleton = this;
         }

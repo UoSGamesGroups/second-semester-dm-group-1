@@ -7,7 +7,7 @@ public class Projectile : MonoBehaviour
     private float mDamage = 1.0f;
     private ushort mPlayerID;
 
-    public ParticleSystem hitEffect;
+    public ParticleSystem mHitEffect;
 
     private Rigidbody2D mRigidbody;
 
@@ -26,10 +26,9 @@ public class Projectile : MonoBehaviour
                 playerBase.TakeDamage(mDamage);
                 Destroy(gameObject);
                 Destroy(this);
-                ParticleEffect();
-
             }
         }
+        StartCoroutine(ParticleExplosion(mHitEffect, transform.position));
     }
 
     public void Init(ushort playerID)
@@ -60,8 +59,12 @@ public class Projectile : MonoBehaviour
                 break;
         }
     }
-    public void ParticleEffect()
-    {
 
+    static IEnumerator ParticleExplosion(ParticleSystem effect, Vector3 location)
+    {
+        ParticleSystem particles = Instantiate(effect, location, Quaternion.identity);
+        yield return new WaitForSeconds(particles.main.duration);
+        Destroy(particles.gameObject);
     }
+
 }
