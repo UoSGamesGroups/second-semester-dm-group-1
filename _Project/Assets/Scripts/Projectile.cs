@@ -7,6 +7,8 @@ public class Projectile : MonoBehaviour
     private float mDamage = 1.0f;
     private ushort mPlayerID;
 
+    public ParticleSystem hitEffect;
+
     private Rigidbody2D mRigidbody;
 
     public void Start()
@@ -24,6 +26,8 @@ public class Projectile : MonoBehaviour
                 playerBase.TakeDamage(mDamage);
                 Destroy(gameObject);
                 Destroy(this);
+                ParticleEffect();
+
             }
         }
     }
@@ -55,5 +59,9 @@ public class Projectile : MonoBehaviour
             default:
                 break;
         }
+    }
+    public void ParticleEffect()
+    {
+
     }
 }
