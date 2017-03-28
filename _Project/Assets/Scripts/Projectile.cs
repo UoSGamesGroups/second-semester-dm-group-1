@@ -55,6 +55,10 @@ public class Projectile : MonoBehaviour
             case "Gravity":
                 // do the shootey thing
                 break;
+            case "Booster":
+                transform.position = collision.transform.position;
+                mRigidbody.velocity = collision.GetComponent<Booster>().GetBoost();
+                break;
             default:
                 break;
         }

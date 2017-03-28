@@ -80,7 +80,7 @@ public class PlayerBase : MonoBehaviour
 
     private void DoDebug()
     {
-        mHPText.text = "Integrity " + mHP.ToString("N0");
+        mHPText.text = "HP " + mHP.ToString("N0");
     }
 
     private void DrawFireLine()
