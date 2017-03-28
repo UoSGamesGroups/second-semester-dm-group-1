@@ -9,9 +9,11 @@ public class UI_Button : MonoBehaviour {
    public Animator animInstructions;
 
     // Use this for initialization
-    void Start () {
-		
+    void Start ()
+    {
+
 	}
+
 	
 	// Update is called once per frame
 	void Update () {
