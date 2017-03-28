@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 8c7aab01673ca7042b9ed9d9c04800cd
-timeCreated: 1490721928
+guid: fafa418971ea11e45a9f09f589c506e5
+timeCreated: 1490723113
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Forcefield_0
+    21300000: asteroid_0
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -79,15 +79,15 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Forcefield_0
+      name: asteroid_0
       rect:
         serializedVersion: 2
-        x: 298
-        y: 320
-        width: 422
-        height: 424
+        x: 182
+        y: 240
+        width: 520
+        height: 465
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
