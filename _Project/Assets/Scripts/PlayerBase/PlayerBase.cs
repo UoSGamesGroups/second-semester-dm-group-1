@@ -123,6 +123,7 @@ public class PlayerBase : MonoBehaviour
     {
         Debug.Log("damage");
         mHP -= damage;
+        win();
     }
     public void win()
     {
