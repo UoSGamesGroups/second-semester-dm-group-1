@@ -6,6 +6,10 @@ public class Projectile : MonoBehaviour
 {
     private float mDamage = 1.0f;
     private ushort mPlayerID;
+    // how many times the projectile has rebounded
+    private int bulletRebounds = 0;
+    // max amount of rebounds before destruction.
+    private int maxRebounds = 5;
 
     public ParticleSystem mHitEffect;
 
@@ -29,6 +33,14 @@ public class Projectile : MonoBehaviour
             }
         }
         StartCoroutine(ParticleExplosion(mHitEffect, transform.position));
+        bulletRebounds++;
+        // note: this does not seem to delete the final particle that has been emitted (bug Known!)
+        // checks to see how many rebounds each projectile has.
+        if (bulletRebounds >= maxRebounds)
+        {
+            Destroy(this);
+            Destroy(gameObject);
+        }
     }
 
     public void Init(ushort playerID)
