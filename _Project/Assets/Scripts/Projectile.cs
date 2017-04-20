@@ -9,7 +9,7 @@ public class Projectile : MonoBehaviour
     // how many times the projectile has rebounded
     private int bulletRebounds = 0;
     // max amount of rebounds before destruction.
-    private int maxRebounds = 5;
+    private int maxRebounds = 20;
 
     public ParticleSystem mHitEffect;
 
