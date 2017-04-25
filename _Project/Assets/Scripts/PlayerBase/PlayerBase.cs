@@ -130,9 +130,13 @@ public class PlayerBase : MonoBehaviour
     }
     public void win()
     {
-        if (mHP <= 0)
+        if (mHP <= 0 && (PlayerID == 0))
         {
-            SceneManager.LoadScene("final");
+            SceneManager.LoadScene("finalRed");
+        }
+        else if (mHP <= 0 && (PlayerID == 1))
+        {
+            SceneManager.LoadScene("finalBlue");
         }
      }
 }
