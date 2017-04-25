@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Singularity : MonoBehaviour
+public class Singularity : Purchasable_Field
 {
 
     // Use this for initialization
-    void Start()
+    new void Start()
     {
-
+        base.Start();
     }
 
     // Update is called once per frame

@@ -8,6 +8,7 @@ using UnityEngine;
 public class TouchHandler : MonoBehaviour
 {
 
+    public LayerMask defaultLayer;
     public LayerMask touchLayer;
 
     private List<GameObject> mCurrentTouches;

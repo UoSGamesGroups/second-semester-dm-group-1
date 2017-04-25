@@ -2,22 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Booster : MonoBehaviour
+public class Booster : Purchasable_Field
 {
+
     [Range(0.0f, 10.0f)]
     public float mShotVariance;
 
     [Range(0.0f, 15.0f)]
     public float mFireForce;
 
-	// Use this for initialization
-	void Start ()
+    // Use this for initialization
+    new void Start()
     {
-		
-	}
-	
-	// Update is called once per frame
-	void Update ()
+        base.Start();
+    }
+
+    // Update is called once per frame
+    void Update ()
     {
 		
 	}
