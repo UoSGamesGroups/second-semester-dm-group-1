@@ -124,6 +124,9 @@ public class PlayerBase : MonoBehaviour
         //Debug.Log("damage");
         mHP -= damage;
         win();
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("bullet");
+        foreach (GameObject enemy in enemies)
+        GameObject.Destroy(enemy);
     }
     public void win()
     {
