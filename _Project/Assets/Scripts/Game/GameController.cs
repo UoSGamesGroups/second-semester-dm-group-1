@@ -2,6 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum EPlayer
+{
+    BLUE,
+    RED
+}
+
 public class GameController : MonoBehaviour
 {
 

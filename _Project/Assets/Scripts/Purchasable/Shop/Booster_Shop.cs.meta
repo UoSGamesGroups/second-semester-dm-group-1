@@ -1,10 +1,13 @@
 fileFormatVersion: 2
 guid: d3e9ff4f872e0e34a9a4d11264857641
-timeCreated: 1492661563
+timeCreated: 1492922224
 licenseType: Free
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - mBlueArtwork: {fileID: 21300000, guid: 38c73520f4b3b5a42afe3e8647afc698, type: 3}
+  - mRedArtwork: {fileID: 21300000, guid: 38c73520f4b3b5a42afe3e8647afc698, type: 3}
+  - mFieldVersion: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Forcefield_Shop : Purchasable {
+public class Forcefield_Shop : Purchasable_Shop {
 
 	// Use this for initialization
 	void Start () {
@@ -13,19 +13,5 @@ public class Forcefield_Shop : Purchasable {
 	void Update () {
 
     }
-
-    void OnTouchBegin(Vector2 pos)
-    {
-        mFingerOffset = (Vector2)transform.position - pos;
-    }
-
-    void OnTouchMove(Vector2 pos)
-    {
-        transform.position = pos + mFingerOffset;
-    }
-
-    void OnTouchExit(Vector2 pos)
-    {
-
-    }
+    
 }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Booster_Shop : Purchasable {
+public class Booster_Shop : Purchasable_Shop {
 
     private bool mIsPlaced = false;
 
@@ -21,26 +21,21 @@ public class Booster_Shop : Purchasable {
 
     }
 
-    void OnTouchBegin(Vector2 pos)
-    {
-        mFingerOffset = (Vector2)transform.position - pos;
-    }
-
-    void OnTouchMove(Vector2 pos)
+    new void OnTouchMove(Vector2 pos)
     {
         if (!mIsPlaced)
         {
-            transform.position = pos + mFingerOffset;
+            base.OnTouchMove(pos);
         }
         else
         {
             mPlaceRotation = 180 + Mathf.Atan2(transform.position.y-pos.y, transform.position.x - pos.x) * Mathf.Rad2Deg;
-            Debug.Log("Pos: " + transform.position.ToString() + " Finger: " + pos.ToString() + " Rotation: " + mPlaceRotation.ToString("N2") );
+            //Debug.Log("Pos: " + transform.position.ToString() + " Finger: " + pos.ToString() + " Rotation: " + mPlaceRotation.ToString("N2") );
             transform.rotation = Quaternion.Euler(0, 0, -90 + mPlaceRotation);
         }
     }
 
-    void OnTouchExit(Vector2 pos)
+    new void OnTouchExit(Vector2 pos)
     {
 
         if (!mIsPlaced)
@@ -50,7 +45,9 @@ public class Booster_Shop : Purchasable {
         }
         else
         {
-            var fieldObject = Instantiate(mFieldVersion, transform.position, transform.rotation);
+            Purchasable_Field fieldObject = Instantiate(mFieldVersion, transform.position, Quaternion.Euler(0, 0, -90 + mPlaceRotation));
+            mFieldVersion.Init(mPlayerColour);
+
             transform.position = mStartPos;
             gameObject.SetActive(false);
         }

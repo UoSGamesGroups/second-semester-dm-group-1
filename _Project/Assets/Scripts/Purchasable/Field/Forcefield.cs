@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Singularity : Purchasable_Field
-{
+public class Forcefield : Purchasable_Field {
 
     // Use this for initialization
     new void Start()
@@ -12,9 +11,7 @@ public class Singularity : Purchasable_Field
     }
 
     // Update is called once per frame
-    void Update()
-    {
-    }
-
-
+    void Update () {
+		
+	}
 }
